@@ -15,7 +15,7 @@ namespace MusicSymphony.Application
         public Dictionary<string, PlayList> Symphonyfy = new();
 
 
-        public void Run()
+        public void Jam()
         {
             Utility.Utility.MainMenu();
         Init: try
