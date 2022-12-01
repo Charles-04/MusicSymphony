@@ -6,8 +6,9 @@ namespace MusicSymphony
     {
         static void Main(string[] args)
         {
-           MusicPlayer musicPlayer = new MusicPlayer();
-            musicPlayer.AddNewPlaylist();
+          
+            PlayList playList = new PlayList();
+            playList.Run();
         }
     }
 }

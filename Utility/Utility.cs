@@ -34,22 +34,36 @@ namespace MusicSymphony.Utility
             _mainMenu.AppendLine($"5 : Edit playlist");
             _mainMenu.AppendLine($"6 : Goto playlist");
             _mainMenu.AppendLine($"7 : Exit");
-
+        }
+        
+            public static void DisplayMainMenu()
+        {
             Console.WriteLine(_mainMenu.ToString());
 
         }
         public static void PlaylistMenu()
         {
-            _playlistMenu.AppendLine($"2 : Add new music");
-            _playlistMenu.AppendLine($"1 : Display all music");
+            _playlistMenu.AppendLine($"1 : Add new music");
+            _playlistMenu.AppendLine($"2 : Display all music");
             _playlistMenu.AppendLine($"3 : Play in Alphabetic order");
             _playlistMenu.AppendLine($"4 : Play in shuffle mode");
-            _playlistMenu.AppendLine($"5 : Edit playlist");
-            _playlistMenu.AppendLine($"6 : Goto playlist");
+            _playlistMenu.AppendLine($"5 : Edit Music name");
+            _playlistMenu.AppendLine($"6 : Remove Music");
             _playlistMenu.AppendLine($"7 : Exit");
 
-            Console.WriteLine(_mainMenu.ToString());
+           
 
+        }
+        public static void DisplayPlaylistMenu()
+        {
+            Console.WriteLine(_playlistMenu.ToString());
+
+        }
+
+        public static void NotFound(string item)
+        {
+
+            Console.WriteLine($"{item} not found");
         }
     }
 }

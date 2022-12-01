@@ -9,8 +9,8 @@ namespace MusicSymphony.Application
 
         public void AlphabeticDisplay()
         {
-            var sortedList = playlist.OrderBy(music => music.Title);
-            DisplayMusic((List<Music>)sortedList);
+            var sortedList = playlist.OrderBy(music => music.Title).ToList();
+            DisplayMusic(sortedList);
 
         }
 
@@ -26,6 +26,7 @@ namespace MusicSymphony.Application
                 if (isNameNull == false)
                 {
                     newPlaylist.Title = name;
+                   
 
                 AddMusic: Console.WriteLine("Do you want to add music?");
                     string option = Console.ReadLine().Trim().ToLower();
@@ -47,6 +48,30 @@ namespace MusicSymphony.Application
             {
                 Console.WriteLine(ex.Message);
                 goto AddNew;
+            }
+        }
+
+        public void RemoveMusic()
+        {
+            try
+            {
+                Console.WriteLine("Enter Music Title");
+                var title = Console.ReadLine().Trim().ToLower();
+                foreach (var item in playlist)
+                {
+                    if (title == item.Title.ToLower())
+                    {
+                        playlist.Remove(item);
+                    }
+                    else
+                    {
+                        Utility.Utility.NotFound(title);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
             }
         }
     }
