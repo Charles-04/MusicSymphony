@@ -3,7 +3,7 @@ namespace MusicSymphony.Application
 {
     internal partial class PlayList
     {
-        PlayList _musicList;
+        public PlayList ?_musicList;
 
         
 
@@ -22,15 +22,31 @@ namespace MusicSymphony.Application
                 Console.WriteLine("Enter Playlist Name");
                 string name = Console.ReadLine().Trim();
                 bool isNameNull = inputChecker.NullValidator(name, "Name can't be empty");
-                Console.WriteLine("Do you want to add music?");
-                string option = Console.ReadLine().Trim();
-                bool isOptionNull = inputChecker.NullValidator(option, "Option can't be empty");
+
+                if (isNameNull == false)
+                {
+                    newPlaylist.Title = name;
+
+                AddMusic: Console.WriteLine("Do you want to add music?");
+                    string option = Console.ReadLine().Trim().ToLower();
+                    if (option == "y")
+                    {
+                        newPlaylist.AddMusic();
+                        goto AddMusic;
+                    }
+                    else if (option == "n")
+                    {
+                        Console.WriteLine("Playlist added");
+                    }
+
+                    _musicList = newPlaylist;
+                }
 
             }
-            catch (InputNullException)
+            catch (InputNullException ex)
             {
-
-                throw;
+                Console.WriteLine(ex.Message);
+                goto AddNew;
             }
         }
     }

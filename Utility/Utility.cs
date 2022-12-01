@@ -9,6 +9,7 @@ namespace MusicSymphony.Utility
     internal static class Utility
     {
         private static Random rng = new Random();
+        private static StringBuilder _playlistMenu = new();
         private static StringBuilder _mainMenu = new();
         public static List<T> Shuffle<T>(this IList<T> list)
         {
@@ -39,13 +40,13 @@ namespace MusicSymphony.Utility
         }
         public static void PlaylistMenu()
         {
-            _mainMenu.AppendLine($"1 : Display all music");
-            _mainMenu.AppendLine($"2 : Add new music");
-            _mainMenu.AppendLine($"3 : Play in Alphabetic order");
-            _mainMenu.AppendLine($"4 : Play in shuffle mode");
-            _mainMenu.AppendLine($"5 : Edit playlist");
-            _mainMenu.AppendLine($"6 : Goto playlist");
-            _mainMenu.AppendLine($"7 : Exit");
+            _playlistMenu.AppendLine($"2 : Add new music");
+            _playlistMenu.AppendLine($"1 : Display all music");
+            _playlistMenu.AppendLine($"3 : Play in Alphabetic order");
+            _playlistMenu.AppendLine($"4 : Play in shuffle mode");
+            _playlistMenu.AppendLine($"5 : Edit playlist");
+            _playlistMenu.AppendLine($"6 : Goto playlist");
+            _playlistMenu.AppendLine($"7 : Exit");
 
             Console.WriteLine(_mainMenu.ToString());
 

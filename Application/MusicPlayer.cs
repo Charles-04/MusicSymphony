@@ -8,7 +8,14 @@ namespace MusicSymphony.Application
 {
     internal class MusicPlayer
     {
+        PlayList playlist = new();
         public string Title { get; init; } = "Music Symphony";
-        public List<PlayList> musicPlayer = new();
+        public Dictionary<string, PlayList> Symphonyfy = new();
+
+        public void AddNewPlaylist()
+        {
+            playlist.AddNewList();
+            Symphonyfy.Add(playlist._musicList.Title, playlist._musicList);    
+        }
     }
 }

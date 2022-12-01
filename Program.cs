@@ -6,14 +6,8 @@ namespace MusicSymphony
     {
         static void Main(string[] args)
         {
-            Utility.Utility.MainMenu();
-           
-            /*PlayList playList = new PlayList(); 
-            playList.AddMusic();
-            playList.AddMusic();
-            playList.AddMusic();
-            playList.ShuffleMusic();
-            playList.AlphabeticDisplay();*/
+           MusicPlayer musicPlayer = new MusicPlayer();
+            musicPlayer.AddNewPlaylist();
         }
     }
 }

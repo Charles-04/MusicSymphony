@@ -71,9 +71,6 @@ namespace MusicSymphony.Application
                 goto AddMusic;
             }
         }
-        internal void EditMusic(string Title)
-        {
-            _newMusic.Title = Title;
-        }
+       
     }
 }
