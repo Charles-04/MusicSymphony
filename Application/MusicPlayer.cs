@@ -14,10 +14,10 @@ namespace MusicSymphony.Application
         public string Title { get; init; } = "Music Symphony";
         public Dictionary<string, PlayList> Symphonyfy = new();
 
-
+        public void MakeList() => Utility.Utility.MainMenu();
         public void Jam()
         {
-            Utility.Utility.MainMenu();
+            
         Init: try
             {
 
@@ -155,7 +155,8 @@ namespace MusicSymphony.Application
             {
                 if (music.Title.ToLower() == title && isTitleNull == false)
                 {
-                    music.Title = title;
+                    music.Title = newTitle;
+                    Console.WriteLine($"Music tiltle changed to {music.Title}");
                 }
                 else
                 {

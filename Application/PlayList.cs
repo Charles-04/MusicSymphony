@@ -9,13 +9,20 @@ namespace MusicSymphony.Application
     {
         InputChecker inputChecker = new();
         Music music = new();
-        public string Title { get; set; }
+        private string _title;
+        public string Title
+        {
+            get { return _title; }
+
+            set { _title = value; }
+        }
     
         public List<Music> playlist = new();
-
+        public void MakeList() => Utility.Utility.PlaylistMenu(); 
+        
         public void Run()
         {
-            Utility.Utility.PlaylistMenu();
+           
          Init: try
             {
                 
@@ -27,6 +34,9 @@ namespace MusicSymphony.Application
 
                 switch (option)
                 {
+                    case 0:
+                        Play(); 
+                        goto Init;
                     case 1:
                         Console.Clear();
                         AddMusic();

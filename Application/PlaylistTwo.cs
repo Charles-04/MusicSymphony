@@ -3,9 +3,9 @@ namespace MusicSymphony.Application
 {
     internal partial class PlayList
     {
-        public PlayList ?_musicList;
+        public PlayList? _musicList;
 
-        
+
 
         public void AlphabeticDisplay()
         {
@@ -26,9 +26,9 @@ namespace MusicSymphony.Application
                 if (isNameNull == false)
                 {
                     newPlaylist.Title = name;
-                   
 
-                AddMusic: Console.WriteLine("Do you want to add music?");
+
+                AddMusic: Console.WriteLine("Do you want to add music? \n Press N for No or Y for Yes");
                     string option = Console.ReadLine().Trim().ToLower();
                     if (option == "y")
                     {
@@ -72,6 +72,44 @@ namespace MusicSymphony.Application
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
+            }
+        }
+
+        public void Play()
+        {
+            play: try
+            {
+                var count = 0;
+                while (count <= playlist.Count)
+                {
+                    Console.Clear();
+                    Console.WriteLine($"\n Currently Jamming {playlist[count].Title} \n Press N for Next \n Press P for previous \n E to exit");
+                    var option = Console.ReadKey();
+                    if (option.Key == ConsoleKey.N)
+                    {
+                        count++;
+                    }
+                    else if (option.Key == ConsoleKey.P)
+                    {
+                        count--;
+                    }
+                    else if (option.Key == ConsoleKey.E)
+                    {
+                        Run();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Option invalid");
+                        Thread.Sleep(3000);
+                        Console.Clear();
+                        goto play;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                goto play;
             }
         }
     }
