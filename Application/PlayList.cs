@@ -29,7 +29,7 @@ namespace MusicSymphony.Application
         Init: try
             {
                 MusicPlayer musicPlayer = new MusicPlayer();
-                Console.WriteLine($"Playlist : {Title} ");
+                Console.WriteLine($"\nPlaylist : {Title} ");
 
                 Utility.Utility.DisplayPlaylistMenu();
                 var option = int.Parse(Console.ReadLine());
@@ -52,7 +52,7 @@ namespace MusicSymphony.Application
 
                     case 3:
                         Console.Clear();
-                        AlphabeticDisplay();
+                        PlayAlphabetically();
                         goto Init;
 
                     case 4:
@@ -70,11 +70,6 @@ namespace MusicSymphony.Application
                         RemoveMusic();
                         goto Init;
                     case 7:
-                        Console.Clear();
-                        Console.WriteLine("This action will wipe all your playlists");
-                        musicPlayer.Jam();
-                        break;
-                    case 8:
                         Console.WriteLine("\n Thanks For using our playlist. Press any key to exit ");
                         Environment.Exit(0000);
                         break;
@@ -109,8 +104,9 @@ namespace MusicSymphony.Application
         public void ShuffleMusic()
         {
             var shuffledList = Utility.Utility.Shuffle(playlist);
-            DisplayMusic(shuffledList);
+           
             Play(shuffledList);
+            DisplayMusic(shuffledList);
         }
         public void EditMusic()
         {

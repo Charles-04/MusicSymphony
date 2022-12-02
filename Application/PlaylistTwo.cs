@@ -17,8 +17,24 @@ namespace MusicSymphony.Application
             }
             else
             {
+                
+                //Play(sortedList);
                 DisplayMusic(sortedList);
+            }
+        }
+
+        public void PlayAlphabetically()
+        {
+            var sortedList = playlist.OrderBy(music => music.Title).ToList();
+            if (sortedList.Count <= 0)
+            {
+                Console.WriteLine("No music found");
+            }
+            else
+            {
+
                 Play(sortedList);
+                
             }
         }
 
@@ -104,7 +120,7 @@ namespace MusicSymphony.Application
                     }
                     else if (option.Key == ConsoleKey.P)
                     {
-                        count--;
+                        count -=1;
                     }
                     else if (option.Key == ConsoleKey.E)
                     {

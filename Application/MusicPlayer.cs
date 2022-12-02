@@ -121,6 +121,7 @@ namespace MusicSymphony.Application
         }
         public void DisplayPlaylists()
         {
+            Console.WriteLine($"Total Playlist equals : {Symphonyfy.Count}");
             foreach (var music in Symphonyfy.Values)
             {
                 Console.WriteLine($"Name : {music.Title} \n Number of Music : {music.playlist.Count}");

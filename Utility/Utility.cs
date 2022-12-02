@@ -50,8 +50,7 @@ namespace MusicSymphony.Utility
             _playlistMenu.AppendLine($"4 : Play in shuffle mode");
             _playlistMenu.AppendLine($"5 : Edit Music name");
             _playlistMenu.AppendLine($"6 : Remove Music");
-            _playlistMenu.AppendLine($"7 : Goto Main Menu");
-            _playlistMenu.AppendLine($"8 : Exit");
+            _playlistMenu.AppendLine($"7 : Exit");
 
            
 
