@@ -2,6 +2,7 @@
 using  MusicSymphony.Utility;
 
 using MusicSymphony.Exceptions;
+using static MusicSymphony.Application.MusicPlayer;
 
 namespace MusicSymphony.Application
 {
@@ -9,6 +10,7 @@ namespace MusicSymphony.Application
     {
         InputChecker inputChecker = new();
         Music music = new();
+        
         private string _title;
         public string Title
         {
@@ -22,10 +24,11 @@ namespace MusicSymphony.Application
         
         public void Run()
         {
-           
-         Init: try
+            
+
+        Init: try
             {
-                
+                MusicPlayer musicPlayer = new MusicPlayer();
                 Console.WriteLine($"Playlist : {Title} ");
 
                 Utility.Utility.DisplayPlaylistMenu();
@@ -35,7 +38,7 @@ namespace MusicSymphony.Application
                 switch (option)
                 {
                     case 0:
-                        Play(); 
+                        Play(playlist); 
                         goto Init;
                     case 1:
                         Console.Clear();
@@ -67,6 +70,11 @@ namespace MusicSymphony.Application
                         RemoveMusic();
                         goto Init;
                     case 7:
+                        Console.Clear();
+                        Console.WriteLine("This action will wipe all your playlists");
+                        musicPlayer.Jam();
+                        break;
+                    case 8:
                         Console.WriteLine("\n Thanks For using our playlist. Press any key to exit ");
                         Environment.Exit(0000);
                         break;
@@ -102,6 +110,7 @@ namespace MusicSymphony.Application
         {
             var shuffledList = Utility.Utility.Shuffle(playlist);
             DisplayMusic(shuffledList);
+            Play(shuffledList);
         }
         public void EditMusic()
         {

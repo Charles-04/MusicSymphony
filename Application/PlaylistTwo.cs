@@ -1,4 +1,5 @@
 ﻿using MusicSymphony.Exceptions;
+
 namespace MusicSymphony.Application
 {
     internal partial class PlayList
@@ -10,8 +11,15 @@ namespace MusicSymphony.Application
         public void AlphabeticDisplay()
         {
             var sortedList = playlist.OrderBy(music => music.Title).ToList();
-            DisplayMusic(sortedList);
-
+            if (sortedList.Count <= 0)
+            {
+                Console.WriteLine("No music found");
+            }
+            else
+            {
+                DisplayMusic(sortedList);
+                Play(sortedList);
+            }
         }
 
         public void AddNewList()
@@ -38,6 +46,11 @@ namespace MusicSymphony.Application
                     else if (option == "n")
                     {
                         Console.WriteLine("Playlist added");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect Option");
+                        goto AddMusic;
                     }
 
                     _musicList = newPlaylist;
@@ -75,7 +88,7 @@ namespace MusicSymphony.Application
             }
         }
 
-        public void Play()
+        public void Play(List<Music> playlist)
         {
             play: try
             {
@@ -83,7 +96,7 @@ namespace MusicSymphony.Application
                 while (count <= playlist.Count)
                 {
                     Console.Clear();
-                    Console.WriteLine($"\n Currently Jamming {playlist[count].Title} \n Press N for Next \n Press P for previous \n E to exit");
+                    Console.WriteLine($"\n Currently Jamming {playlist[count].Title} by {playlist[count].Artist} \n Press N for Next \n Press P for previous \n E to exit");
                     var option = Console.ReadKey();
                     if (option.Key == ConsoleKey.N)
                     {
