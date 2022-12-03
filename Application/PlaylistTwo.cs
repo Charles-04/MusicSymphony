@@ -5,7 +5,7 @@ namespace MusicSymphony.Application
     internal partial class PlayList
     {
         public PlayList? _musicList;
-
+        const int sleepTimer = 3000;
 
 
         public void AlphabeticDisplay()
@@ -18,7 +18,7 @@ namespace MusicSymphony.Application
             else
             {
                 
-                //Play(sortedList);
+                
                 DisplayMusic(sortedList);
             }
         }
@@ -120,7 +120,7 @@ namespace MusicSymphony.Application
                     }
                     else if (option.Key == ConsoleKey.P)
                     {
-                        count -=1;
+                        count -= 1;
                     }
                     else if (option.Key == ConsoleKey.E)
                     {
@@ -129,7 +129,7 @@ namespace MusicSymphony.Application
                     else
                     {
                         Console.WriteLine("Option invalid");
-                        Thread.Sleep(3000);
+                        Thread.Sleep(sleepTimer);
                         Console.Clear();
                         goto play;
                     }

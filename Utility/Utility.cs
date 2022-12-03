@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicSymphony.Application;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,7 @@ namespace MusicSymphony.Utility
         private static Random random = new Random();
         private static StringBuilder _playlistMenu = new();
         private static StringBuilder _mainMenu = new();
+        public static MusicPlayer musicPlayer = new();
         public static List<T> Shuffle<T>(this IList<T> list)
         {
             int count = list.Count;
@@ -50,7 +52,8 @@ namespace MusicSymphony.Utility
             _playlistMenu.AppendLine($"4 : Play in shuffle mode");
             _playlistMenu.AppendLine($"5 : Edit Music name");
             _playlistMenu.AppendLine($"6 : Remove Music");
-            _playlistMenu.AppendLine($"7 : Exit");
+            _playlistMenu.AppendLine($"7 : Goto Main Menu");
+            _playlistMenu.AppendLine($"8 : Exit");
 
            
 
@@ -65,6 +68,65 @@ namespace MusicSymphony.Utility
         {
 
             Console.WriteLine($"{item} not found");
+        }
+        public static void Jam()
+        {
+
+        Init: try
+            {
+
+                Console.WriteLine($"Music Player : {musicPlayer.Title} ");
+
+                DisplayMainMenu();
+                var option = int.Parse(Console.ReadLine());
+
+
+                switch (option)
+                {
+                    case 1:
+                        Console.Clear();
+                        musicPlayer.DisplayAllMusic();
+                        goto Init;
+
+                    case 2:
+                        Console.Clear();
+                        musicPlayer.AddNewPlaylist();
+                        goto Init;
+
+                    case 3:
+                        Console.Clear();
+                        musicPlayer.DisplayPlaylists();
+                        goto Init;
+
+                    case 4:
+                        Console.Clear();
+                        musicPlayer.RemovePlayList();
+                        goto Init;
+
+                    case 5:
+                        Console.Clear();
+                        musicPlayer.EditPlayList();
+                        goto Init;
+
+                    case 6:
+                        Console.Clear();
+                        musicPlayer.GotoPlaylist();
+                        goto Init;
+                    case 7:
+                        Console.WriteLine("\n Thanks For using our playlist. Press any key to exit ");
+                        Environment.Exit(0000);
+                        break;
+                    default:
+                        Console.WriteLine("Wrong Option. Please Try again");
+                        goto Init;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                goto Init;
+            }
         }
     }
 }

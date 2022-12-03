@@ -25,6 +25,7 @@ namespace MusicSymphony.Application
         public void Run()
         {
             
+            
 
         Init: try
             {
@@ -70,6 +71,10 @@ namespace MusicSymphony.Application
                         RemoveMusic();
                         goto Init;
                     case 7:
+                        Console.Clear();
+                        Utility.Utility.Jam();
+                        break;
+                    case 8:
                         Console.WriteLine("\n Thanks For using our playlist. Press any key to exit ");
                         Environment.Exit(0000);
                         break;
